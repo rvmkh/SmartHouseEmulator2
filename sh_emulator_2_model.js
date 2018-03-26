@@ -1,5 +1,6 @@
 "use strict";
 
+/**************************** Devices Parent *******************************************/
 class PowerSwitch {
 	constructor(devname){
 		this._devname = devname;
@@ -25,6 +26,32 @@ class PowerSwitch {
 		console.log("Power state: " + this._state + "\n\n");
 	}
 }
+/**************************** New Devices Model *******************************************/
+
+class NewDevice extends PowerSwitch {
+	constructor(devname) {
+		super(devname);																																// PowerSwitch Parent
+		this._k = 0;																																	// Initial key number for Map
+		this._devsmap = new Map;																											// Creating Map for new objects
+	}
+	create(devname) {
+			this._newdev = new PowerSwitch(devname);																		// New exemplar of PowerSwitch
+			this._devsmap.set(this._k, this._newdev);																		// Filling Map with new Object
+			this._k++;																																	// Increasing key
+	}
+	clear(){
+		this._devsmap.clear();
+	}
+	checkname(delname){
+
+	}
+	get devsqtty() {
+		console.log("Devs qtty: " + this._devsmap.size);
+		return this._devsmap.size;
+	}
+}
+
+/************************** TV && Condey - static devices *********************************************/
 
 class TVset extends PowerSwitch {
 	constructor(devname, chnlist, timer) {
@@ -41,7 +68,8 @@ class TVset extends PowerSwitch {
 	set sleep(timer) {
 		setTimeout(
 			function(){
-				console.log("\nTV slept ...\n");
+				console.log("\nTV slept after 3 sec...\n");
+				document.getElementById("TVset1").style.backgroundColor = "lightgray";
 			},
 			timer
 		);
@@ -68,48 +96,8 @@ class Condey extends PowerSwitch {
 	}
 }
 
-class LampStore {
-	constructor(name){
-		this._lamps = [];
-	}
-	add(lamp) {
-		this._lamps.push(lamp);
-	}
-	getLamp(name) {
-		return this._lamps.filter((lamp) => {
-			if ( lamp.name === name ) {
-				return true;
-			}
-		});
-	}
-}
 
-class LampFabric {
-	constructor(name){
-		this._lamps = [];
-	}
-	create(name) {
-			this._lamps.push(new PowerSwitch(name));
-	}
-	removeByName(name){
-		this.lamps = this._lamps.filter(
-			(lamp) => {
-				if ( lamp.name !== name ){
-					return true;
-				}
-			}
-		);
-	}
-	remove(lamp) {
-		this._lamps = this._lamps.filter(
-			(l) => {
-				if ( l !== lamp ) {
-					return true;
-				}
-			}
-		);
-	}
-	clear() {
-		this._lamps.length = 0;
-	}
-}
+
+
+
+//
