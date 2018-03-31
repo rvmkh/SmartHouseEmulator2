@@ -6,12 +6,6 @@ class PowerSwitch {
 		this._devname = devname;
 		this._state = false;
 	}
-	get devname(){
-		return this._devname;
-	}
-	set devname(devname) {
-		this._devname = devname;
-	}
 	get state() {
 		return this._state;
 	}
