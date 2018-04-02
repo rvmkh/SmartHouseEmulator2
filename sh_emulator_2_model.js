@@ -48,10 +48,9 @@ class NewDevice extends PowerSwitch {
 /************************** TV && Condey - static devices *********************************************/
 
 class TVset extends PowerSwitch {
-	constructor(devname, chnlist, timer) {
+	constructor(devname, chnlist) {
 		super(devname);
 		this._chnlist = chnlist;
-		this._timer = timer;
 	}
 	get chnlist(){
 		return this._chnlist;
@@ -59,14 +58,8 @@ class TVset extends PowerSwitch {
 	set chnlist(chnlist){
 		this._chnlist = chnlist;
 	}
-	set sleep(timer) {
-		setTimeout(
-			function(){
-				console.log("\nTV slept after 3 sec...\n");
-				document.getElementById("TVset1").style.backgroundColor = "lightgray";
-			},
-			timer
-		);
+	sleep() {
+		return true;
 	}
 }
 

@@ -85,9 +85,15 @@ function exectvbuttons(){
 	   tvtab.innerHTML = tvtab.innerHTML + '<a href="http://sputniktv.in.ua/ictv.html"><br>3 - ICTV</a><br>';
 	}
 	document.getElementById("sleepbut").onclick = function() {
-    if ( tvset.state === true ) {
-	   tvset.sleep = "3000";
-	   tvset.off();
+    if ( tvset.state === true && tvset.sleep() === true ) {
+       setTimeout(
+         function(){
+           console.log("\nTV slept after 3 sec...\n");
+           document.getElementById("TVset1").style.backgroundColor = "lightgray";
+         },
+         3000
+       );
+	     tvset.off();
     }
     else {
       console.log("Please, turn on TV first");
