@@ -16,8 +16,7 @@ class PowerSwitch {
 		this._state = false;
 	}
 	display() {
-		console.log(this._devname);
-		console.log("Power state: " + this._state + "\n\n");
+		return this._state;
 	}
 }
 /**************************** New Devices Model *******************************************/
@@ -40,7 +39,6 @@ class NewDevice extends PowerSwitch {
 
 	}
 	get devsqtty() {
-		console.log("Devs qtty: " + this._devsmap.size);
 		return this._devsmap.size;
 	}
 }

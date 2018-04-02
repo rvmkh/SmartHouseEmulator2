@@ -76,7 +76,7 @@ function exectvbuttons(){
       tvset.on();
       tvtab.style.backgroundColor = "lightgreen";
     }
-    tvset.display();
+    console.log ( tvset.display() );
   }
 
 	document.getElementById("chnlistbut").onclick = function() {
@@ -137,7 +137,7 @@ function execcondeybuts() {
           condey.on();
           condeytab.style.backgroundColor = "lightgreen";
       }
-      condey.display();
+      console.log( condey.display() );
     }
 
     document.getElementById("settempbut").onclick = function() {
@@ -198,7 +198,7 @@ let newdev = new NewDevice();                                                   
 document.getElementById("addbut").onclick = function() {                        // Addbut onclick
   let newdevname = prompt("Enter the name for Dev","Lamp");                     // Get new dev name from user
   newdev.create(newdevname);                                                    // Create new different Devises, using one Class - different names and keys in Map
-  newdev.devsqtty;                                                              // print to console the Qtty of created devices
+  console.log( newdev.devsqtty );                                               // print to console the Qtty of created devices
 
   let divnewdev = document.createElement("div");                                // Draw new dev
   divnewdev.id = newdevname;
@@ -208,7 +208,6 @@ document.getElementById("addbut").onclick = function() {                        
   divnewdev.style.border = "thick solid green";
   document.body.appendChild(divnewdev);
   divnewdev.textContent = newdevname + " (is clickable)";
-  // divnewdev.class = "newdevice";
 
   divnewdev.onclick = function() {                                              // On/Off new dev
     if ( newdev._devsmap.get(0).state === true ) {                              // when push new dev to Map, it Key=0 && previous Key++
@@ -228,7 +227,7 @@ document.getElementById("delbut").onclick = function() {                        
       let [mykey, myval] = entry;                                               // Dev-map Destructure
       if ( myval._devname == delname ) {                                        // Devices filter by its name
         newdev._devsmap.delete(mykey);                                          // Delete device from Model with a certain name
-        newdev.devsqtty;
+        console.log( newdev.devsqtty );
       }
   }
   let deldiv = document.getElementById(delname);                                // Erase DIV for deleted Device
@@ -248,7 +247,7 @@ document.getElementById("clearbut").onclick = function() {                      
     document.body.removeChild(remdiv);
   }
   newdev.clear();
-  newdev.devsqtty;
+  console.log( newdev.devsqtty );
 }
 
 
